@@ -25,12 +25,10 @@ for i in range(num_episodes):
     rAll = 0
     done = False
     e = 1. / ((i / 100) + 1)
-
+    if i == 300:
+        print(i)
     while not done:
         action = np.argmax(Q[state, :] + np.random.randn(1, env.action_space.n) / (i + 1))
-
-
-
         new_state, reward, done, _ = env.step(action)
 
         Q[state, action] = reward + dis * np.max(Q[new_state, :])
