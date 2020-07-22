@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5403b211-dda5-4816-8bb4-ce6dbd6be6d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lake/frozenLake.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bendit/Pytorch-bandit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bendit/Simple-Policy-Bendit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bendit/torch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pole/Pole.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pole/TorchPole.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/torchnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lake/Lake.py" beforeDir="false" afterPath="$PROJECT_DIR$/lake/Lake.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lake" />
+    <property name="last_opened_file_path" value="D:/Project/Unity/WayBackHome/ClassDiagram" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
@@ -39,8 +43,8 @@
       <recent name="D:\programing\RL\lake" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.frozenLake">
-    <configuration name="Lake" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.TorchPole">
+    <configuration name="Pole" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -48,12 +52,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lake" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pole" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lake/Lake.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pole/Pole.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -62,7 +66,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="frozenLake" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Pytorch-bandit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -70,12 +74,78 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lake" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bendit" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lake/frozenLake.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bendit/Pytorch-bandit.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TorchPole" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pole" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pole/TorchPole.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="torch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bendit" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bendit/torch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="torchnn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/torchnn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -86,8 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.frozenLake" />
-        <item itemvalue="Python.Lake" />
+        <item itemvalue="Python.TorchPole" />
+        <item itemvalue="Python.Pytorch-bandit" />
+        <item itemvalue="Python.torchnn" />
+        <item itemvalue="Python.torch" />
+        <item itemvalue="Python.Pole" />
       </list>
     </recent_temporary>
   </component>
@@ -103,54 +176,86 @@
       <updated>1595211167981</updated>
       <workItem from="1595211169255" duration="639000" />
       <workItem from="1595293082211" duration="2116000" />
-      <workItem from="1595318172186" duration="678000" />
+      <workItem from="1595318172186" duration="4111000" />
+      <workItem from="1595325736504" duration="3356000" />
+      <workItem from="1595376422309" duration="2093000" />
+      <workItem from="1595408022732" duration="6840000" />
     </task>
+    <task id="LOCAL-00001" summary="frozenLake.py">
+      <created>1595318950916</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1595318950916</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="frozenLake.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="frozenLake.py" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="663" height="466" key="DebuggerActiveHint" timestamp="1595293893414">
+    <state x="388" y="5" key="CommitChangelistDialog2" timestamp="1595318950352">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="663" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1595293893414" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1595318848955">
+    <state x="388" y="5" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595318950352" />
+    <state width="1295" height="466" key="DebuggerActiveHint" timestamp="1595418382055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595318848955" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1595318848954">
+    <state width="1295" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1595418382055" />
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1595378896901">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595318848954" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1595318848954">
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595378896901" />
+    <state width="1493" height="156" key="GridCell.Tab.0.bottom" timestamp="1595419786472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595318848954" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1595318848955">
+    <state width="1493" height="156" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595419786472" />
+    <state width="1493" height="156" key="GridCell.Tab.0.center" timestamp="1595419786472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595318848955" />
-    <state width="1493" height="230" key="GridCell.Tab.1.bottom" timestamp="1595295279353">
+    <state width="1493" height="156" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595419786472" />
+    <state width="1493" height="156" key="GridCell.Tab.0.left" timestamp="1595419786472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="230" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595295279353" />
-    <state width="1493" height="230" key="GridCell.Tab.1.center" timestamp="1595295279353">
+    <state width="1493" height="156" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595419786472" />
+    <state width="1493" height="156" key="GridCell.Tab.0.right" timestamp="1595419786472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="230" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1595295279353" />
-    <state width="1493" height="230" key="GridCell.Tab.1.left" timestamp="1595295279353">
+    <state width="1493" height="156" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595419786472" />
+    <state width="1493" height="156" key="GridCell.Tab.1.bottom" timestamp="1595419787902">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="230" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1595295279353" />
-    <state width="1493" height="230" key="GridCell.Tab.1.right" timestamp="1595295279353">
+    <state width="1493" height="156" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595419787902" />
+    <state width="1493" height="156" key="GridCell.Tab.1.center" timestamp="1595419787901">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="230" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1595295279353" />
-    <state x="831" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1595318269606">
+    <state width="1493" height="156" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1595419787901" />
+    <state width="1493" height="156" key="GridCell.Tab.1.left" timestamp="1595419787901">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="831" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1595318269606" />
+    <state width="1493" height="156" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1595419787901" />
+    <state width="1493" height="156" key="GridCell.Tab.1.right" timestamp="1595419787902">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="156" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1595419787902" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1595318956162">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595318956162" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1595418365651">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1595418365651" />
+    <state x="831" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1595376820798">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="831" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1280.760@0.0.1536.824" timestamp="1595325817128" />
+    <state x="831" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1595376820798" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -160,11 +265,32 @@
           <line>28</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pole/TorchPole.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bendit/torch.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/torchnn.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RL$frozenLake.coverage" NAME="frozenLake Coverage Results" MODIFIED="1595318848944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lake" />
+    <SUITE FILE_PATH="coverage/RL$frozenLake.coverage" NAME="frozenLake Coverage Results" MODIFIED="1595320125171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lake" />
+    <SUITE FILE_PATH="coverage/RL$Simple_Policy_Bendit.coverage" NAME="Simple-Policy-Bendit Coverage Results" MODIFIED="1595329791175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bendit" />
+    <SUITE FILE_PATH="coverage/RL$torch.coverage" NAME="torch Coverage Results" MODIFIED="1595418305716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bendit" />
     <SUITE FILE_PATH="coverage/RL$Lake.coverage" NAME="Lake Coverage Results" MODIFIED="1595294297408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lake" />
+    <SUITE FILE_PATH="coverage/RL$Pytorch_bandit.coverage" NAME="Pytorch-bandit Coverage Results" MODIFIED="1595418532946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bendit" />
+    <SUITE FILE_PATH="coverage/RL$Pole.coverage" NAME="Pole Coverage Results" MODIFIED="1595329825204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pole" />
+    <SUITE FILE_PATH="coverage/RL$TorchPole.coverage" NAME="TorchPole Coverage Results" MODIFIED="1595419786324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pole" />
+    <SUITE FILE_PATH="coverage/RL$torchnn.coverage" NAME="torchnn Coverage Results" MODIFIED="1595418523698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
