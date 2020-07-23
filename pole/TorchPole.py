@@ -8,9 +8,10 @@ import matplotlib.pyplot as plt
 dtype = torch.float
 device = torch.device("cuda:0")
 
-env = gym.make('CartPole-v0')
+env = gym.make('CartPole-v1')
+env._max_episode_steps = 10001
 
-max_ep = 200
+max_ep = 3000
 
 model = torch.nn.Sequential(
     torch.nn.Linear(4, 8),
@@ -20,11 +21,11 @@ model = torch.nn.Sequential(
     torch.nn.Linear(30, 2),
 )
 loss_fn = torch.nn.MSELoss(reduction='sum')
-learning_rate = 1e-4
+learning_rate = 1e-5
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 dis = 0.9
-REPLAY_MEMORY = 500
+REPLAY_MEMORY = 50000
 rewards = []
 replay_buffer = deque()
 
@@ -33,22 +34,19 @@ def simple_replay_train(train_batch):
     x_stack = torch.empty(0).reshape(0, 4)
     y_stack = torch.empty(0).reshape(0, 2)
 
-    for state, action, reward, next_state, done in train_batch:
-        x = torch.tensor(state)
-        y = model(x.float()).float()
-        x = x.float()
-        if done:
-            y[action] = -100
-        else:
-            x1 = torch.tensor(s1)
-            y1 = model(x1.float()).float()
-            y[action] = reward + dis * int(torch.argmax(y1))
+    for state, a, r, next_state, d in train_batch:
+        x_ = torch.tensor(state)
+        y_ = model(x_.float()).float()
+        x_ = x_.float()
 
-        y = y.unsqueeze(0)
-        x = x.unsqueeze(0)
+        if d:
+            y[a] = r
 
-        y_stack = torch.cat([y_stack, y])
-        x_stack = torch.cat([x_stack, x])
+        y_ = y_.unsqueeze(0)
+        x_ = x_.unsqueeze(0)
+
+        y_stack = torch.cat([y_stack, y_])
+        x_stack = torch.cat([x_stack, x_])
 
     y_pred = model(x_stack)
     loss = loss_fn(y_pred, y_stack)
@@ -57,12 +55,12 @@ def simple_replay_train(train_batch):
     optimizer.step()
 
 
-for i in range(1000):
+for i in range(500):
     s = env.reset()
     running_reward = 0
     e = 1. / ((i / 100) + 1)
-
-    for j in range(max_ep):
+    done = False
+    while not done:
 
         x = torch.tensor(s)
         y = model(x.float()).float()
@@ -72,7 +70,12 @@ for i in range(1000):
         else:
             action = int(torch.argmax(y))
 
-        s1, reward, done, _ = env.step(action)  # Get our reward for taking an action given a bandit.
+        s1, reward, done, _ = env.step(action)
+
+        if done:
+            rewards.append(running_reward)
+            reward = -10000
+
         replay_buffer.append((s, action, reward, s1, done))
 
         if len(replay_buffer) > REPLAY_MEMORY:
@@ -80,10 +83,6 @@ for i in range(1000):
 
         running_reward += reward
 
-        if done:
-            rewards.append(running_reward)
-            reward = -100
-            break
         s = s1
 
     if i % 10 == 1:
