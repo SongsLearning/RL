@@ -1,6 +1,8 @@
 import torch
 import numpy as np
 import gym
+import matplotlib.pyplot as plt
+
 
 dtype = torch.float
 device = torch.device("cpu")
@@ -20,7 +22,9 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 dis = 0.9
 
-for i in range(100):
+rewards = []
+
+for i in range(1000):
     s = env.reset()
     running_reward = 0
     ep_history = []
@@ -38,6 +42,7 @@ for i in range(100):
 
         s1, reward, done, _ = env.step(action)  # Get our reward for taking an action given a bandit.
 
+        running_reward += reward
         if done:
             y[action] = -100
         else:
@@ -51,8 +56,13 @@ for i in range(100):
         optimizer.step()
 
         if done:
+            rewards.append(running_reward)
             break
         s = s1
+
+
+plt.bar(range(len(rewards)), rewards, color="blue")
+plt.show()
 
 
 while True:
@@ -63,6 +73,6 @@ while True:
         y = model(x.float()).float()
         action = int(torch.argmax(y))
         s1, reward, done, _ = env.step(action)
-        
+
         if done:
             break
