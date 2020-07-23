@@ -13,16 +13,26 @@ env._max_episode_steps = 10001
 
 max_ep = 3000
 
-model = torch.nn.Sequential(
-    torch.nn.Linear(4, 8),
-    torch.nn.ReLU(),
-    torch.nn.Linear(8, 30),
-    torch.nn.ReLU(),
-    torch.nn.Linear(30, 2),
-)
+
+def makemodel():
+    model = torch.nn.Sequential(
+        torch.nn.Linear(4, 8),
+        torch.nn.ReLU(),
+        torch.nn.Linear(8, 30),
+        torch.nn.ReLU(),
+        torch.nn.Linear(30, 2),
+    )
+    return model
+
+
+mainDQN = makemodel()
+targetDQN = makemodel()
+targetDQN.load_state_dict(mainDQN.state_dict())
+
+
 loss_fn = torch.nn.MSELoss(reduction='sum')
 learning_rate = 1e-5
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+optimizer = torch.optim.Adam(mainDQN.parameters(), lr=learning_rate)
 
 dis = 0.9
 REPLAY_MEMORY = 50000
@@ -36,11 +46,14 @@ def simple_replay_train(train_batch):
 
     for state, a, r, next_state, d in train_batch:
         x_ = torch.tensor(state)
-        y_ = model(x_.float()).float()
+        y_ = mainDQN(x_.float()).float()
         x_ = x_.float()
 
+        next_state = torch.tensor(next_state)
         if d:
             y[a] = r
+        else:
+            y[a] = r + dis * torch.max(targetDQN(next_state.float()).float())
 
         y_ = y_.unsqueeze(0)
         x_ = x_.unsqueeze(0)
@@ -48,22 +61,22 @@ def simple_replay_train(train_batch):
         y_stack = torch.cat([y_stack, y_])
         x_stack = torch.cat([x_stack, x_])
 
-    y_pred = model(x_stack)
-    loss = loss_fn(y_pred, y_stack)
+    y_pred = mainDQN(x_stack)
+    loss = loss_fn(y_stack, y_pred)
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
 
 
-for i in range(500):
+for i in range(3000):
     s = env.reset()
     running_reward = 0
-    e = 1. / ((i / 100) + 1)
+    e = 1. / ((i / 50) + 1)
     done = False
     while not done:
 
         x = torch.tensor(s)
-        y = model(x.float()).float()
+        y = mainDQN(x.float()).float()
 
         if np.random.rand(1) < e:
             action = env.action_space.sample()
@@ -74,7 +87,7 @@ for i in range(500):
 
         if done:
             rewards.append(running_reward)
-            reward = -10000
+            reward = -100
 
         replay_buffer.append((s, action, reward, s1, done))
 
@@ -85,10 +98,12 @@ for i in range(500):
 
         s = s1
 
-    if i % 10 == 1:
-        for _ in range(50):
+    if i % 10 == 1 and i > 100:
+        for _ in range(3):
             minibatch = random.sample(replay_buffer, 10)
             simple_replay_train(minibatch)
+        targetDQN.load_state_dict(mainDQN.state_dict())
+
 
 plt.bar(range(len(rewards)), rewards, color="blue")
 plt.show()
@@ -98,7 +113,7 @@ while True:
     for i in range(max_ep):
         env.render()
         x = torch.tensor(s)
-        y = model(x.float()).float()
+        y = mainDQN(x.float()).float()
         action = int(torch.argmax(y))
         s1, reward, done, _ = env.step(action)
 
