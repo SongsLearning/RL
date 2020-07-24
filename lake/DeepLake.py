@@ -29,23 +29,27 @@ def makemodel():
 DQNmodel = makemodel()
 
 loss_fn = torch.nn.MSELoss(reduction='sum')
-learning_rate = 1.01
+learning_rate = 0.0005
 optimizer = torch.optim.Adam(DQNmodel.parameters(), lr=learning_rate)
 
 jList = []
 rList = []
 eList = []
-dis = .99
+dis = .95
 e = 0.1
-num_episodes = 1000
+num_episodes = 5000
+
+wincnt = 0
+
 
 for i in range(num_episodes):
     s = env.reset()
     rAll = 0
-    d = False
+    done = False
     j = 0
     eList.append(e)
-    while not d:
+    loss = None
+    while not done:
         j += 1
         s_hot = torch.from_numpy(np.identity(16)[s:s + 1][0]).float()
         allQ = DQNmodel(s_hot)
@@ -53,17 +57,19 @@ for i in range(num_episodes):
         if np.random.rand(1) < e:
             a = env.action_space.sample()
 
-        s1, r, d, _ = env.step(a)
+        s1, r, done, _ = env.step(a)
 
         s1_hot = torch.from_numpy(np.identity(16)[s1:s1 + 1][0]).float()
         Q1all = DQNmodel(s1_hot)
 
         if r == 0.0:
-            r = -0.1
-        if d and r < 0.0:
-            r = -3
-        if d and r > 0.0:
-            r = 3
+            r = -0.01
+        if done and r < 0.0:
+            r = -1
+        if done and r > 0.0:
+            r = 1
+            wincnt += 1
+
 
         with torch.no_grad():
             maxQ1 = float(torch.max(Q1all))
@@ -78,16 +84,23 @@ for i in range(num_episodes):
         rAll += r
         s = s1
 
-        if d:
+
+
+        if done:
             e = 1. / ((i / 50) + 10)
             break
+
+    if i % 100 == 99:
+        print(i, loss.item())
 
     jList.append(j)
     rList.append(rAll)
 
-print("Percent of succesful episodes: " + str(sum(rList) / num_episodes) + "%")
+print("이동 횟수 평균 : " + str(sum(jList) / num_episodes) + "%")
 
 plt.plot(rList)
 plt.show()
 plt.plot(jList)
 plt.show()
+
+print(wincnt)
