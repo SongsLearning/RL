@@ -29,9 +29,8 @@ mainDQN = makemodel()
 targetDQN = makemodel()
 targetDQN.load_state_dict(mainDQN.state_dict())
 
-
 loss_fn = torch.nn.MSELoss(reduction='sum')
-learning_rate = 1e-5
+learning_rate = 1e-1
 optimizer = torch.optim.Adam(mainDQN.parameters(), lr=learning_rate)
 
 dis = 0.9
@@ -68,11 +67,12 @@ def simple_replay_train(train_batch):
     optimizer.step()
 
 
-for i in range(3000):
+for i in range(2000):
     s = env.reset()
     running_reward = 0
-    e = 1. / ((i / 50) + 1)
+    e = 1. / ((i / 10) + 1)
     done = False
+    step_count = 0
     while not done:
 
         x = torch.tensor(s)
@@ -85,25 +85,30 @@ for i in range(3000):
 
         s1, reward, done, _ = env.step(action)
 
+        running_reward += reward
         if done:
             rewards.append(running_reward)
-            reward = -100
+            reward = -300
 
         replay_buffer.append((s, action, reward, s1, done))
 
         if len(replay_buffer) > REPLAY_MEMORY:
             replay_buffer.popleft()
 
-        running_reward += reward
-
         s = s1
 
+        step_count += 1
+        if step_count > 10000:
+            break
+
+    if step_count > 10000:
+        break
+
     if i % 10 == 1 and i > 100:
-        for _ in range(3):
+        for _ in range(50):
             minibatch = random.sample(replay_buffer, 10)
             simple_replay_train(minibatch)
         targetDQN.load_state_dict(mainDQN.state_dict())
-
 
 plt.bar(range(len(rewards)), rewards, color="blue")
 plt.show()
