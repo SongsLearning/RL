@@ -83,6 +83,10 @@ def optimize_model():
     state_batch = torch.cat(batch.state)
     next_state_batch = torch.cat(batch.next_state)
 
+    action_batch = list(batch.action)
+    reward_batch = list(batch.reward)
+    reward_batch = torch.from_numpy(np.array(reward_batch)).float().cuda()
+
     state_batch = state_batch.view(BATCH_SIZE, 16)
     next_state_batch = next_state_batch.view(BATCH_SIZE, 16)
     Q = DQNmodel(state_batch.cuda())
@@ -91,7 +95,10 @@ def optimize_model():
     with torch.no_grad():
         maxQ1 = float(torch.max(Q1all))
         targetQ = Q.clone()
-        targetQ[a] = r + dis * maxQ1
+
+        targetQ = targetQ.transpose(0, 1)
+        targetQ[action_batch] = reward_batch + dis * maxQ1
+        targetQ = targetQ.transpose(0, 1)
 
     loss = loss_fn(Q, targetQ)
     optimizer.zero_grad()
@@ -123,7 +130,7 @@ for i in range(num_episodes):
         if done and r < 0.0:
             r = -1
         if done and r > 0.0:
-            r = 1
+            r = 5
             wincnt += 1
 
         memory.push(s_hot, a, s1_hot, r)
@@ -145,7 +152,7 @@ for i in range(num_episodes):
 
 print("이동 횟수 평균 : " + str(sum(jList) / num_episodes) + "%")
 
-plt.plot(rList)
+plt.plot(rList, 'r')
 plt.show()
 plt.plot(jList)
 plt.show()
